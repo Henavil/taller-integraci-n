@@ -1,0 +1,76 @@
+>carro =
+{
+   "placa":"fgr547",
+   "numero serie":"548796",
+   "modelo":"2020",
+   "marca":"chevrolet",
+   "kilometraje":"200 km",
+   "tipo":"camioneta"
+}
+
+Crear base de datos
+>use servicios;
+
+Crear colección 
+>db.coleccion_concesionario.insert(documento)
+WriteResult ( { "nInserted" : 1 } )
+
+Verificar colección
+show collections 
+Coleccion_concesionario
+
+Insertar documentos
+
+
+
+
+
+ use servicios
+ to db servicios
+
+[
+   {
+      "placa":"iuy547",
+      "numero serie":"859764",
+      "modelo":"2021",
+      "marca":"mazda",
+      "kilometraje":"300 km",
+      "tipo":"automovil"
+   },
+   {
+      "placa":"gdw587",
+      "numero serie":"98754",
+      "modelo":"2019",
+      "marca":"skoda",
+      "kilometraje":"150 km",
+      "tipo":"jeep"
+   },
+   {
+      "placa":"sad857",
+      "numero serie":"00147",
+      "modelo":"2018",
+      "marca":"mercedes",
+      "kilometraje":"250 km",
+      "tipo":"automovil"
+   },
+   {
+      "placa":"kh224",
+      "numero serie":"658779",
+      "modelo":"2017",
+      "marca":"Hammer",
+      "kilometraje":"350 km",
+      "tipo":"camioneta"
+   }
+]
+
+para actualizar datos
+
+db.concesionario.update({"placa":"fgr547"},{$set:{"modelo":"2019"}})
+
+borrar datos
+
+db.concesionario.remove({"placa":"gdw587"})
+
+9.	Crear una sentencia que permita obtener un documento según el número de placa del documento.
+
+db.concesionario.findOne({"placa":"kh224"})

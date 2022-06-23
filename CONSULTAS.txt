@@ -1,0 +1,126 @@
+Select count(1) from cdr;
+Select * from cdr limit 10;
+
+
+1.
+INSERT INTO CDR(REGISTRO,ORIGEN,DESTINO,DURACION,FACTURAR,ESTADO) VALUES ('2022-04-23 18:40:17','101','106',80,10,'ANSWERED');
+INSERT INTO CDR(REGISTRO,ORIGEN,DESTINO,DURACION,FACTURAR,ESTADO) VALUES ('2021-08-18 10:30:17','101','106',80,10,'ANSWERED');
+INSERT INTO CDR(REGISTRO,ORIGEN,DESTINO,DURACION,FACTURAR,ESTADO) VALUES ('2020-06-30 12:30:17','3164958755','250',16,153,'BUSY');
+INSERT INTO CDR(REGISTRO,ORIGEN,DESTINO,DURACION,FACTURAR,ESTADO) VALUES ('2022-11-20 08:30:17','4885533','128',1250,68,'BUSY');
+
+2.
+UPDATE cdr SET origen = '3102556699' WHERE id = 1657663;
+UPDATE cdr SET destino = '4889966' WHERE id = 1657664;
+UPDATE cdr SET duracion = 56 WHERE id = 1657665;
+UPDATE cdr SET facturar = 45 WHERE id = 1657666;
+
+9.
+SELECT destino, SUM(facturar) FROM cdr 
+WHERE YEAR(registro) = 2019 AND destino IN ('111','104','128','161','151') 
+GROUP BY destino;
+
+
+
+
+/*
+TOTAL registros 1380246
+
+*/
+/*Esta es consulta trae los registros con mayores ventas*/
+   
+select * from nombre_tabla;
+select * from nombre_tabla LIMIT 5;
+select * from nombre_tabla ORDER BY fecha DESC LIMIT 5; /*ASC, DESC*/
+select id, origen, destino, estado from nombre_tabla LIMIT 5;
+
+update nombre_tabla SET estado = 'BUSY';
+update nombre_tabla SET estado = 'BUSY' where estado = 'ANSWERED';
+update nombre_tabla SET estado = 'BUSY', facturar = 1 where estado = 'ANSWERED'; /*se pueden agregar estos valores: AND OR IN */
+update nombre_tabla SET estado = 'BUSY' where estado = 'ANSWERED' OR estado = 'STARTED';
+update nombre_tabla SET estado = 'BUSY', facturar = 1 where estado IN ('ANSWERED', 'STARTED', 'CANCELLED');
+
+delete from nombre_tabla;
+delete from nombre_tabla where col1 = 'BUSY';
+delete from nombre_tabla where estado = 'BUSY' AND duracion = 60;
+delete from nombre_tabla where id = 1325140;
+delete from nombre_tabla where fecha = '2021-06-17 13:22:28';
+delete from nombre_tabla where YEAR(registro) = 2015;
+
+insert into nombre_tabla(col1, col2, col3) VALUES ('valor1', 100, 10);
+insert into nombre_tabla(col1, col3, col2) VALUES ('valor1', 10, 100);
+
+/*los ultmios del año*/
+
+/*CONTAR REGISTROS DEL AÑO 2019*/
+SELECT COUNT(*)
+FROM CDR 
+WHERE YEAR (REGISTRO) = '2019'
+
+/*MIRAR CUANTOS REGISTROS TIENE EL AÑO 2019*/
+SELECT * FROM CDR 
+WHERE YEAR (REGISTRO) = 2019
+
+
+DESARROLLO TALLER 3
+
+PUNTO1
+INSERT INTO CDR (REGISTRO, ORIGEN, DESTINO, DURACION, FACTURAR, ESTADO) 
+VALUES ('2022-04-24 13:20:30', '3205879841', '300', '40', '440', 'ANSWERED');
+INSERT INTO CDR (REGISTRO, ORIGEN, DESTINO, DURACION, FACTURAR, ESTADO) 
+VALUES ('2022-01-15 08:10:20', '2015487958', '155', '32', '322', 'NO ANSWER');
+INSERT INTO CDR (REGISTRO, ORIGEN, DESTINO, DURACION, FACTURAR, ESTADO) 
+VALUES ('2022-03-02 18:45:30', '3152456871', '215', '20', '150', 'BUSY');
+INSERT INTO CDR (REGISTRO, ORIGEN, DESTINO, DURACION, FACTURAR, ESTADO) 
+VALUES ('2022-02-18 15:20:30', '3005478899', '210', '99','530', 'ANSWERED');
+
+
+PUNTO2
+UPDATE CDR SET ORIGEN = 301254887744, DESTINO = 320, ESTADO = 'BUSY'
+WHERE ID = 1657678;
+update CDR SET ORIGEN = 3243258411, DESTINO = 588, ESTADO = 'ANSWERED' 
+WHERE ID = 1657679;
+update CDR SET ORIGEN = 3102558877, DESTINO = 110, ESTADO = 'NO ANSWER' 
+WHERE ID = 1657680;
+update CDR SET ORIGEN = 3045877441, DESTINO = 420, ESTADO = 'BUSY' 
+WHERE ID = 1657680;
+
+/*PUNTO 3*/
+DELETE FROM CDR  
+WHERE DATE (REGISTRO) = '2019-12-12'
+
+/*PUNTO 4 */
+SELECT * FROM CDR 
+WHERE DATE (REGISTRO) = '2018-03-10' 
+AND (ESTADO) = 'ANSWERED';
+
+
+
+/*PUNTO 5 */
+SELECT * FROM CDR 
+WHERE YEAR (REGISTRO) = 2018 AND MONTH (REGISTRO) = 3 AND DAY (REGISTRO) =10 AND (ESTADO) = 'ANSWERED'
+
+
+/*PUNTO 6*/
+SELECT * FROM cdr
+WHERE (REGISTRO) >= '2017-01-12 12:00:00' 
+AND (REGISTRO) <= '2017-03-03 23:59:00' 
+AND (ESTADO) = 'NO ANSWER'
+
+/*PUNTO 7*/
+SELECT COUNT(1) FROM CDR
+WHERE DATE(REGISTRO) = '2019-04-07' AND (ESTADO) = 'ANSWERED'
+
+/*PUNTO8*/
+SELECT YEAR (REGISTRO), COUNT(*) FROM CDR
+WHERE YEAR (REGISTRO) IN ('2016', '2017', '2018', '2019')
+AND (ESTADO) = 'NO ANSWER'
+GROUP BY YEAR (REGISTRO)
+
+/*PUNTO 9*/
+SELECT destino, SUM(facturar) FROM cdr 
+WHERE YEAR(registro) = 2019 AND destino IN ('111','104','128','161','151') 
+GROUP BY destino;
+
+
+
+
