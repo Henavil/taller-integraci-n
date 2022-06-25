@@ -1,6 +1,7 @@
 Select count(1) from cdr;
 Select * from cdr limit 10;
 
+Mensaje "Hola para todos, les envio un saludo"
 
 1.
 INSERT INTO CDR(REGISTRO,ORIGEN,DESTINO,DURACION,FACTURAR,ESTADO) VALUES ('2022-04-23 18:40:17','101','106',80,10,'ANSWERED');
